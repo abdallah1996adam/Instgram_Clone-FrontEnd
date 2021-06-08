@@ -1,7 +1,7 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import './nav.scss'
+import "./nav.scss";
 const NavBar = () => {
   return (
     <nav>
@@ -19,11 +19,13 @@ const NavBar = () => {
           <li>
             <Link to="/profile">profile</Link>
           </li>
+          <li>
+            <Link to="/posts">Add post</Link>
+          </li>
         </ul>
       </div>
     </nav>
   );
 };
-
 
 export default NavBar;
