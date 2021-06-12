@@ -1,7 +1,21 @@
-import React from "react";
+import React, {useState, useEffect} from  "react";
+import postService from "../../services/post";
+
 import "./home.scss";
 
 const Home = () => {
+  const [posts, setPosts] = useState([])
+
+  useEffect( ()=>{
+    async function fetchData (){
+      const response = await postService.allPosts() 
+      
+    }
+
+   
+  },[])
+
+
   return (
     <div className="home">
       <div className="card home-card">

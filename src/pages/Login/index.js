@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
+import {UserContext} from '../../App'
 import M from "materialize-css";
 import userService from "../../services/user";
 import "./style.scss";
 
 const Login = () => {
+  const{state, dispatch} = useContext(UserContext)
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+
   const history = useHistory();
 
   const handleClick = async () => {
     try {
       const response = await userService.login(email, password);
+      console.log(response);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
-
+      dispatch({type:"USER", payload:response.user})
       M.toast({ html: "welcome", classes: "#43a047 green darken-1" });
       history.push("/");
     } catch (error) {

@@ -5,7 +5,9 @@ const postService = {
     const postData = { title, body, pic };
     return await api.post("newpost", postData);
   },
+  allPosts: async () => {
+    return await api.get("allposts");
+  },
 };
-
 
 export default postService;
