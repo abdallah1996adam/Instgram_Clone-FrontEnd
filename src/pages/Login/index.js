@@ -12,9 +12,11 @@ const Login = () => {
   const handleClick = async () => {
     try {
       const response = await userService.login(email, password);
-      console.log(response);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+
       M.toast({ html: "welcome", classes: "#43a047 green darken-1" });
-      history.push('/')
+      history.push("/");
     } catch (error) {
       M.toast({
         html: error.response.data.message,
